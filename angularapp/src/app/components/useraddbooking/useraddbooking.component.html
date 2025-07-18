@@ -1,0 +1,64 @@
+<div class="container mt-4 " *ngIf="!isBookingSuccessful">
+
+    <h3 class="text-primary mb-3 text-center fw-bold">Add Your Details</h3>
+  
+    <form #bookingForm="ngForm"  class="card p-4 shadow rounded-3">
+  
+      <div *ngIf="!isRoomAvailable" class="alert alert-danger">Room not available for selected dates.</div>
+  
+      <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="checkInDate" name="checkInDate" [(ngModel)]="booking.checkInDate" #checkIn="ngModel" required>
+        <label for="checkInDate">Check-in Date</label>
+        <div *ngIf="submitted && checkIn.invalid" class="text-danger">Check in date is Required</div>
+      </div>
+  
+      
+      <div class="form-floating mb-3">
+        <input type="date" class="form-control" id="checkOutDate" name="checkOutDate" [(ngModel)]="booking.checkOutDate" #checkOut="ngModel" required>
+        <label for="checkOutDate">Check-out Date</label>
+        <div *ngIf="submitted && checkOut.invalid" class="text-danger">Check out date is required</div>
+      </div>
+  
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="bookingPurpose" name="bookingPurpose" [(ngModel)]="booking.bookingPurpose" #purpose="ngModel" required>
+        <label for="bookingPurpose">Booking Purpose</label>
+        <div *ngIf="submitted && purpose.invalid" class="text-danger">Booking purpose</div>
+      </div>
+  
+      <div class="form-floating mb-3">
+        <textarea class="form-control" id="specialRequests" name="specialRequests" [(ngModel)]="booking.specialRequests"></textarea>
+        <label for="specialRequests">Special Requests</label>
+      </div>
+  
+      <div class="form-floating mb-3">
+        <textarea class="form-control" id="additionalComments" name="additionalComments" [(ngModel)]="booking.additionalComments"></textarea>
+        <label for="additionalComments">Additional Comments</label>
+      </div>
+      <div class="text-danger text-center mt-3" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
+      <div class="d-flex justify-content-end gap-2">
+        <button type="button" class="btn btn-outline-secondary" (click)="onCancel()">Cancel</button>
+        <button type="submit" class="btn btn-success"  (click)="onSubmit()">Submit</button>
+      </div>
+  
+    </form>
+  
+  </div>
+  
+
+  <div *ngIf="isBookingSuccessful" class="modal-backdrop-custom">
+    <div class="modal-content-custom">
+      <div class="modal-header-custom">
+        Booking Submitted! 🕒
+      </div>
+      <div class="modal-body text-center">
+        <p>Your booking request has been submitted successfully.</p>
+        <p>Please check back in an hour to see if it has been confirmed.</p>
+      </div>
+      <div class="modal-footer-custom">
+        <button class="btn btn-primary" (click)="ConfirmOkay()">Okay</button>
+      </div>
+    </div>
+  </div>
+  

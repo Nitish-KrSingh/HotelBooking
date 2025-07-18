@@ -1,0 +1,13 @@
+.container {
+    max-width: 95%;
+  }
+  
+
+  .btn-sm {
+    font-size: 13px;
+  }
+  
+  .table thead {
+  background-color: #343a40; 
+  color: white; 
+}

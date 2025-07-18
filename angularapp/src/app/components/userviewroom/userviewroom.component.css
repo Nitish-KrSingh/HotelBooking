@@ -1,0 +1,25 @@
+.card-img-top {
+
+    height: 220px;
+  
+    object-fit: cover;
+  
+  }
+  
+  .card {
+  
+    transition: transform 0.2s;
+  
+  }
+  
+  .card:hover {
+  
+    transform: translateY(-5px);
+  
+  }
+  
+  .btn-outline-primary {
+  
+    border-radius: 50px;
+  
+  }
